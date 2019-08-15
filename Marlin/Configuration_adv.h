@@ -198,8 +198,8 @@
  */
 #define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
-  #define CONTROLLER_FAN_PIN 42        // Set a custom pin for the controller fan
-  #define CONTROLLERFAN_SECS 5         // Duration in seconds for the fan to run after all motors are disabled
+  #define CONTROLLER_FAN_PIN 6         // Set a custom pin for the controller fan sur Servo 1 : D6
+  #define CONTROLLERFAN_SECS 60        // Duration in seconds for the fan to run after all motors are disabled
   #define CONTROLLERFAN_SPEED 255      // 255 == full speed
 #endif
 
@@ -262,7 +262,7 @@
  */
 #define CASE_LIGHT_ENABLE
 #if ENABLED(CASE_LIGHT_ENABLE)
-  #define CASE_LIGHT_PIN 40                   // Override the default pin if needed AUX2-D40
+  #define CASE_LIGHT_PIN 44                    // Override the default pin if needed AUX2-D40
   #define INVERT_CASE_LIGHT false             // Set true if Case Light is ON when pin is LOW
   #define CASE_LIGHT_DEFAULT_ON false         // Set default power-up state on
   #define CASE_LIGHT_DEFAULT_BRIGHTNESS 255   // Set default power-up brightness (0-255, requires PWM pin)

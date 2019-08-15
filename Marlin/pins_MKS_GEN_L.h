@@ -49,6 +49,6 @@
   #define Y_CS_PIN 63
 #endif
 
-#define FAN2_PIN       44 // Ventillateur Petsfang sur AUX2-D44 (M106 P1 S255)
+#define FAN2_PIN       4 // Ventillateur Petsfang sur Servo 2 : D4 (M106 P1 S255)
 
 #include "pins_RAMPS.h"
