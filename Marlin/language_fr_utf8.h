@@ -328,7 +328,7 @@
 #define MSG_INFO_EXTRUDERS                  _UxGT("Extrudeurs")
 #define MSG_INFO_BAUDRATE                   _UxGT("Baud")
 #define MSG_INFO_PROTOCOL                   _UxGT("Protocole")
-#define MSG_CASE_LIGHT                      _UxGT("Lumière caisson")
+#define MSG_CASE_LIGHT                      _UxGT("Lumière")
 #define MSG_CASE_LIGHT_BRIGHTNESS           _UxGT("Luminosité")
 
 #if LCD_WIDTH >= 20
