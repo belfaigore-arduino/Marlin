@@ -1493,8 +1493,8 @@
   #define USER_DESC_1 "Arret moteurs"
   #define USER_GCODE_1 "M18"
 
-  #define USER_DESC_1 "Arret ventillateurs"
-  #define USER_GCODE_1 "M107 P0\nM107 P1\nM107 P2\nM107 P3\nM107 P4"
+  #define USER_DESC_2 "Arret ventillateurs"
+  #define USER_GCODE_2 "M107 P0\nM107 P1\nM107 P2\nM107 P3\nM107 P4"
 
 
   #define USER_DESC_3 "Ventillateur Hothend"
