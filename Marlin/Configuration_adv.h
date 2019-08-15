@@ -1490,14 +1490,18 @@
   #define USER_SCRIPT_AUDIBLE_FEEDBACK
   //#define USER_SCRIPT_RETURN  // Return to status screen after a script
 
-  #define USER_DESC_1 "Arret moteurs et ventillateurs"
-  #define USER_GCODE_1 "M18\nM107 P0\nM107 P1\nM107 P2\nM107 P3\nM107 P4"
+  #define USER_DESC_1 "Arret moteurs"
+  #define USER_GCODE_1 "M18"
 
-  #define USER_DESC_2 "Ventillateur Hothend"
-  #define USER_GCODE_2 "M106 P0 S255"
+  #define USER_DESC_1 "Arret ventillateurs"
+  #define USER_GCODE_1 "M107 P0\nM107 P1\nM107 P2\nM107 P3\nM107 P4"
 
-  #define USER_DESC_3 "Ventillateur Petsfang"
-  #define USER_GCODE_3 "M106 P2 S255"
+
+  #define USER_DESC_3 "Ventillateur Hothend"
+  #define USER_GCODE_3 "M106 P0 S255"
+
+  #define USER_DESC_4 "Ventillateur Petsfang"
+  #define USER_GCODE_4 "M106 P2 S255"
 
   //#define USER_DESC_3 "Preheat for ABS"
   //#define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
