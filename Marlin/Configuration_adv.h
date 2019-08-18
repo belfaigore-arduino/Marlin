@@ -206,7 +206,7 @@
 // When first starting the main fan, run it at full speed for the
 // given number of milliseconds.  This gets the fan spinning reliably
 // before setting a PWM value. (Does not work with software PWM for fan on Sanguinololu)
-#define FAN_KICKSTART_TIME 2000
+//#define FAN_KICKSTART_TIME 2000
 
 /**
  * PWM Fan Scaling
@@ -417,6 +417,11 @@
 #define DISABLE_INACTIVE_E true
 
 #define DEFAULT_MINIMUMFEEDRATE       0.0     // minimum feedrate
+/**
+ * Default Axis Steps Per Unit (steps/mm)
+ * Override with M92
+ *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]                 
+ */
 #define DEFAULT_MINTRAVELFEEDRATE     0.0
 
 //#define HOME_AFTER_DEACTIVATE  // Require rehoming after steppers are deactivated

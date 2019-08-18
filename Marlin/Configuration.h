@@ -363,7 +363,7 @@
 // PID Tuning Guide here: http://reprap.org/wiki/PID_Tuning
 
 // Comment the following line to disable PID and enable bang-bang.
-//#define PIDTEMP
+#define PIDTEMP
 #define BANG_MAX 255     // Limits current to nozzle while in bang-bang mode; 255=full current
 #define PID_MAX BANG_MAX // Limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
 #define PID_K1 0.95      // Smoothing factor within any PID loop
@@ -377,9 +377,10 @@
   #define PID_FUNCTIONAL_RANGE 10 // If the temperature difference between the target temperature and the actual temperature
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
-  #define DEFAULT_Kp 20.37
-  #define DEFAULT_Ki 1.50
-  #define DEFAULT_Kd 69.26
+  // FIND YOUR OWN: "M303 E0 C8 S210" to run autotune on the hotend at 210 degreesC for 8 cycles.
+  #define DEFAULT_Kp 17.55  // Last update: 18/09/2019
+  #define DEFAULT_Ki 1.46
+  #define DEFAULT_Kd 52.84
 
 #endif // PIDTEMP
 
@@ -400,8 +401,8 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
-#define BED_LIMIT_SWITCHING
+#define PIDTEMPBED
+//#define BED_LIMIT_SWITCHING
 
 /**
  * Max Bed Power
@@ -414,10 +415,9 @@
 #if ENABLED(PIDTEMPBED)
 
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
-  // tornado
-  #define DEFAULT_bedKp 128.82
-  #define DEFAULT_bedKi 16.91
-  #define DEFAULT_bedKd 245.36
+  #define DEFAULT_bedKp 147.87  // Last update: 18/09/2019
+  #define DEFAULT_bedKi 26.94
+  #define DEFAULT_bedKd 202.89
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
