@@ -363,7 +363,7 @@
 // PID Tuning Guide here: http://reprap.org/wiki/PID_Tuning
 
 // Comment the following line to disable PID and enable bang-bang.
-#define PIDTEMP
+//#define PIDTEMP
 #define BANG_MAX 255     // Limits current to nozzle while in bang-bang mode; 255=full current
 #define PID_MAX BANG_MAX // Limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
 #define PID_K1 0.95      // Smoothing factor within any PID loop
@@ -377,9 +377,6 @@
   #define PID_FUNCTIONAL_RANGE 10 // If the temperature difference between the target temperature and the actual temperature
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
-  // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
-
-  // Tornado
   #define DEFAULT_Kp 20.37
   #define DEFAULT_Ki 1.50
   #define DEFAULT_Kd 69.26
@@ -403,9 +400,8 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-#define PIDTEMPBED
-
-//#define BED_LIMIT_SWITCHING
+//#define PIDTEMPBED
+#define BED_LIMIT_SWITCHING
 
 /**
  * Max Bed Power
@@ -546,7 +542,7 @@
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
-#define ENDSTOP_INTERRUPTS_FEATURE
+//#define ENDSTOP_INTERRUPTS_FEATURE
 
 /**
  * Endstop Noise Filter
@@ -585,12 +581,49 @@
  */
 //#define DISTINCT_E_FACTORS
 
+/*
+ * Calcul des pas par mm
+ *   MOTOR_STEPS_PER_MM      : Nombre de pas moteur pour faire un tour (si un pas fais une rotation de 1.8°, il faut 200 pas pour faire un tour)
+ *   DRIVER_uSTEPS           : Configuration du driver en µ pas (ex: 1/32 -> 32)
+ *   BELT_STEPS_MM           : Pas de la courroie en mm (ecart entre 2 dents)
+ *   SHEAVE_STEPS            : Nombre de pas de la poule moteur
+ *   STEPS_PER_MM_CORRECTION : Correction eventuelle du nombre de pas si necessaire (sinon laisser à 0)
+ *   SCREW_STEPS_MM          : Pas de la visse pour faire un tour en mm (pour l'axe des Z)
+ *   SHEAVE_DIAM_MM          : Diametre de la poulie entrainant le fils de d'extruder
+ */
+#define X_MOTOR_STEPS              200
+#define X_DRIVER_uSTEPS            32
+#define X_BELT_STEPS_MM            2.0
+#define X_SHEAVE_STEPS             20
+#define X_STEPS_PER_MM_CORRECTION  0.0
+ 
+#define Y_MOTOR_STEPS              200
+#define Y_DRIVER_uSTEPS            32
+#define Y_BELT_STEPS_MM            2.0
+#define Y_SHEAVE_STEPS             20
+#define Y_STEPS_PER_MM_CORRECTION  0.0
+
+#define Z_MOTOR_STEPS              200
+#define Z_DRIVER_uSTEPS            32
+#define Z_SCREW_STEPS_MM           8.0
+#define Z_STEPS_PER_MM_CORRECTION  0.0
+
+#define E0_MOTOR_STEPS             200
+#define E0_DRIVER_uSTEPS           32
+#define E0_SHEAVE_DIAM_MM          12.0
+#define E0_STEPS_PER_MM_CORRECTION 0.0
+
 /**
  * Default Axis Steps Per Unit (steps/mm)
  * Override with M92
- *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
+ *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]                 
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.3190, 80.3190, 399.2901, 400 }
+#define X_STEPS_PER_MM  ((X_MOTOR_STEPS  * X_DRIVER_uSTEPS)  / (X_BELT_STEPS_MM * X_SHEAVE_STEPS) + X_STEPS_PER_MM_CORRECTION) 
+#define Y_STEPS_PER_MM  ((Y_MOTOR_STEPS  * Y_DRIVER_uSTEPS)  / (Y_BELT_STEPS_MM * Y_SHEAVE_STEPS) + Y_STEPS_PER_MM_CORRECTION) 
+#define Z_STEPS_PER_MM  ((Z_MOTOR_STEPS  * Z_DRIVER_uSTEPS)  / (Z_SCREW_STEPS_MM) + Z_STEPS_PER_MM_CORRECTION) 
+#define E0_STEPS_PER_MM ((E0_MOTOR_STEPS * E0_DRIVER_uSTEPS) / (E0_SHEAVE_DIAM_MM * PI) + E0_STEPS_PER_MM_CORRECTION) 
+
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { X_STEPS_PER_MM, Y_STEPS_PER_MM, Z_STEPS_PER_MM, E0_STEPS_PER_MM } // OLD: { 80.3190, 80.3190, 399.2901, 400 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -867,8 +900,8 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 280
-#define Y_BED_SIZE 300
+#define X_BED_SIZE 270
+#define Y_BED_SIZE 270
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -876,7 +909,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 400
+#define Z_MAX_POS 380
 
 /**
  * Software Endstops
@@ -888,7 +921,7 @@
  */
 
 // Min software endstops constrain movement within minimum coordinate bounds
-//#define MIN_SOFTWARE_ENDSTOPS
+#define MIN_SOFTWARE_ENDSTOPS
 #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
   #define MIN_SOFTWARE_ENDSTOP_X
   #define MIN_SOFTWARE_ENDSTOP_Y
@@ -896,7 +929,7 @@
 #endif
 
 // Max software endstops constrain movement within maximum coordinate bounds
-//#define MAX_SOFTWARE_ENDSTOPS
+#define MAX_SOFTWARE_ENDSTOPS
 #if ENABLED(MAX_SOFTWARE_ENDSTOPS)
   #define MAX_SOFTWARE_ENDSTOP_X
   #define MAX_SOFTWARE_ENDSTOP_Y
@@ -1117,8 +1150,8 @@
 
 // Manually set the home position. Leave these undefined for automatic settings.
 // For DELTA this is the top-center of the Cartesian print volume.
-//#define MANUAL_X_HOME_POS 0
-//#define MANUAL_Y_HOME_POS 0
+#define MANUAL_X_HOME_POS -10
+#define MANUAL_Y_HOME_POS -25
 //#define MANUAL_Z_HOME_POS 0
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
