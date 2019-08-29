@@ -363,7 +363,7 @@
 // PID Tuning Guide here: http://reprap.org/wiki/PID_Tuning
 
 // Comment the following line to disable PID and enable bang-bang.
-//#define PIDTEMP
+#define PIDTEMP
 #define BANG_MAX 255     // Limits current to nozzle while in bang-bang mode; 255=full current
 #define PID_MAX BANG_MAX // Limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
 #define PID_K1 0.95      // Smoothing factor within any PID loop
@@ -400,8 +400,8 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
-#define BED_LIMIT_SWITCHING
+#define PIDTEMPBED
+//#define BED_LIMIT_SWITCHING
 
 /**
  * Max Bed Power
@@ -796,12 +796,12 @@
 #define Z_PROBE_OFFSET_FROM_EXTRUDER 0   // Z offset: -below +above  [the nozzle]
 
 // Certain types of probes need to stay away from edges
-//#define MIN_PROBE_EDGE 10
+#define MIN_PROBE_EDGE 10
 #ifndef MIN_PROBE_EDGE
-  #define MIN_PROBE_X X_MIN_POS
-  #define MAX_PROBE_X X_MAX_POS
-  #define MIN_PROBE_Y Y_MIN_POS
-  #define MAX_PROBE_Y Y_MAX_POS
+  #define MIN_PROBE_X X_MIN_POS + MIN_PROBE_EDGE
+  #define MAX_PROBE_X X_MAX_POS - MIN_PROBE_EDGE
+  #define MIN_PROBE_Y Y_MIN_POS + MIN_PROBE_EDGE
+  #define MAX_PROBE_Y Y_MAX_POS - MIN_PROBE_EDGE
 #endif
 
 // X and Y axis travel speed (mm/m) between probes
@@ -1042,14 +1042,14 @@
 #if ENABLED(AUTO_BED_LEVELING_LINEAR) || ENABLED(AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 5
+  #define GRID_MAX_POINTS_X 10
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Set the boundaries for probing (where the probe can reach).
-#define LEFT_PROBE_BED_POSITION MIN_PROBE_EDGE 
-#define RIGHT_PROBE_BED_POSITION (X_BED_SIZE - MIN_PROBE_EDGE)
-#define FRONT_PROBE_BED_POSITION MIN_PROBE_EDGE 
-#define BACK_PROBE_BED_POSITION (Y_BED_SIZE - MIN_PROBE_EDGE)
+  #define LEFT_PROBE_BED_POSITION  MIN_PROBE_X
+  #define RIGHT_PROBE_BED_POSITION MAX_PROBE_X
+  #define FRONT_PROBE_BED_POSITION MIN_PROBE_Y
+  #define BACK_PROBE_BED_POSITION  MAX_PROBE_Y
 
   // Probe along the Y axis, advancing X after each column
   //#define PROBE_Y_FIRST
