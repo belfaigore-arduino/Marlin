@@ -149,3 +149,5 @@ CMakeListsPrivate.txt
 cmake-build-*
 
 *.tmp
+
+build/
