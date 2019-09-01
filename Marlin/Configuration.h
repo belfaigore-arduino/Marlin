@@ -610,8 +610,9 @@
 
 #define E0_MOTOR_STEPS             200
 #define E0_DRIVER_uSTEPS           32
-#define E0_SHEAVE_DIAM_MM          12.0
-#define E0_STEPS_PER_MM_CORRECTION 0.0
+#define E0_GEARS_RATIO             3.0       // Le ratio est la division des diametres de la roue entraineuse et celle du moteur
+#define E0_HOBB_DIAM_MM            8.0       // Diametre de la roue qui entraine le filament
+#define E0_STEPS_PER_MM_CORRECTION 40.0      // Après réglage, la bonne valeur doit être autour des 803
 
 /**
  * Default Axis Steps Per Unit (steps/mm)
@@ -621,7 +622,7 @@
 #define X_STEPS_PER_MM  ((X_MOTOR_STEPS  * X_DRIVER_uSTEPS)  / (X_BELT_STEPS_MM * X_SHEAVE_STEPS) + X_STEPS_PER_MM_CORRECTION) 
 #define Y_STEPS_PER_MM  ((Y_MOTOR_STEPS  * Y_DRIVER_uSTEPS)  / (Y_BELT_STEPS_MM * Y_SHEAVE_STEPS) + Y_STEPS_PER_MM_CORRECTION) 
 #define Z_STEPS_PER_MM  ((Z_MOTOR_STEPS  * Z_DRIVER_uSTEPS)  / (Z_SCREW_STEPS_MM) + Z_STEPS_PER_MM_CORRECTION) 
-#define E0_STEPS_PER_MM ((E0_MOTOR_STEPS * E0_DRIVER_uSTEPS) / (E0_SHEAVE_DIAM_MM * PI) + E0_STEPS_PER_MM_CORRECTION) 
+#define E0_STEPS_PER_MM ((E0_MOTOR_STEPS * E0_DRIVER_uSTEPS * E0_GEARS_RATIO) / (E0_HOBB_DIAM_MM * PI) + E0_STEPS_PER_MM_CORRECTION) 
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { X_STEPS_PER_MM, Y_STEPS_PER_MM, Z_STEPS_PER_MM, E0_STEPS_PER_MM } // OLD: { 80.3190, 80.3190, 399.2901, 400 }
 
