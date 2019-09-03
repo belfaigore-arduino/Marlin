@@ -377,9 +377,10 @@
   #define PID_FUNCTIONAL_RANGE 10 // If the temperature difference between the target temperature and the actual temperature
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
-  #define DEFAULT_Kp 20.37
-  #define DEFAULT_Ki 1.50
-  #define DEFAULT_Kd 69.26
+  // tornado Volcano Silicon Socket : M303 E0 S200 C8
+  #define DEFAULT_Kp 14.62
+  #define DEFAULT_Ki 1.25
+  #define DEFAULT_Kd 42.81
 
 #endif // PIDTEMP
 
@@ -414,12 +415,11 @@
 #if ENABLED(PIDTEMPBED)
 
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
-  // tornado
-  #define DEFAULT_bedKp 128.82
-  #define DEFAULT_bedKi 16.91
-  #define DEFAULT_bedKd 245.36
-
-  // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
+  // tornado : M303 E-1 S60 C8
+  #define DEFAULT_bedKp 103.03
+  #define DEFAULT_bedKi 15.34
+  #define DEFAULT_bedKd 173.03
+  
 #endif // PIDTEMPBED
 
 // @section extruder
