@@ -584,7 +584,7 @@
 /*
  * Calcul des pas par mm
  *   MOTOR_STEPS_PER_MM      : Nombre de pas moteur pour faire un tour (si un pas fais une rotation de 1.8°, il faut 200 pas pour faire un tour)
- *   DRIVER_uSTEPS           : Configuration du driver en µ pas (ex: 1/32 -> 32)
+ *   DRIVER_uSTEPS           : Configuration du driver en µ pas (ex: 1/16 -> 16)
  *   BELT_STEPS_MM           : Pas de la courroie en mm (ecart entre 2 dents)
  *   SHEAVE_STEPS            : Nombre de pas de la poule moteur
  *   STEPS_PER_MM_CORRECTION : Correction eventuelle du nombre de pas si necessaire (sinon laisser à 0)
@@ -592,24 +592,24 @@
  *   SHEAVE_DIAM_MM          : Diametre de la poulie entrainant le fils de d'extruder
  */
 #define X_MOTOR_STEPS              200
-#define X_DRIVER_uSTEPS            32
+#define X_DRIVER_uSTEPS            16
 #define X_BELT_STEPS_MM            2.0
 #define X_SHEAVE_STEPS             20
 #define X_STEPS_PER_MM_CORRECTION  0.0
  
 #define Y_MOTOR_STEPS              200
-#define Y_DRIVER_uSTEPS            32
+#define Y_DRIVER_uSTEPS            16
 #define Y_BELT_STEPS_MM            2.0
 #define Y_SHEAVE_STEPS             20
 #define Y_STEPS_PER_MM_CORRECTION  0.0
 
 #define Z_MOTOR_STEPS              200
-#define Z_DRIVER_uSTEPS            32
+#define Z_DRIVER_uSTEPS            16
 #define Z_SCREW_STEPS_MM           8.0
 #define Z_STEPS_PER_MM_CORRECTION  0.0
 
 #define E0_MOTOR_STEPS             200
-#define E0_DRIVER_uSTEPS           32
+#define E0_DRIVER_uSTEPS           16
 #define E0_GEARS_RATIO             3.0       // Le ratio est la division des diametres de la roue entraineuse et celle du moteur
 #define E0_HOBB_DIAM_MM            8.0       // Diametre de la roue qui entraine le filament
 #define E0_STEPS_PER_MM_CORRECTION 40.0      // Après réglage, la bonne valeur doit être autour des 803
