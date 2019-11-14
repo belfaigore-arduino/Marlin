@@ -488,9 +488,9 @@
 #define USE_XMIN_PLUG
 #define USE_YMIN_PLUG
 #define USE_ZMIN_PLUG
-#define USE_XMAX_PLUG
-#define USE_YMAX_PLUG
-#define USE_ZMAX_PLUG
+//#define USE_XMAX_PLUG
+//#define USE_YMAX_PLUG
+//#define USE_ZMAX_PLUG
 
 // Enable pullup for all endstops to prevent a floating state
 //#define ENDSTOPPULLUPS
@@ -613,14 +613,14 @@
 #define Y_STEPS_PER_MM  80 
 #define Z_STEPS_PER_MM  400
 #define E0_STEPS_PER_MM 415 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { X_STEPS_PER_MM, Y_STEPS_PER_MM, Z_STEPS_PER_MM, E0_STEPS_PER_MM } // OLD: { 80.3190, 80.3190, 399.2901, 400 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { X_STEPS_PER_MM, Y_STEPS_PER_MM, Z_STEPS_PER_MM, E0_STEPS_PER_MM }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 50, 100 }
+#define DEFAULT_MAX_FEEDRATE          { 250, 250, 30, 60 }
 
 /**
  * Default Max Acceleration (change/s) change = mm/s
@@ -781,7 +781,7 @@
  *      O-- FRONT --+
  *    (0,0)
  */
-#define X_PROBE_OFFSET_FROM_EXTRUDER -47 // X offset: -left  +right  [of the nozzle]
+#define X_PROBE_OFFSET_FROM_EXTRUDER 37  // X offset: -left  +right  [of the nozzle]
 #define Y_PROBE_OFFSET_FROM_EXTRUDER -1  // Y offset: -front +behind [the nozzle]
 #define Z_PROBE_OFFSET_FROM_EXTRUDER 0   // Z offset: -below +above  [the nozzle]
 
@@ -866,7 +866,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true
+#define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -938,7 +938,7 @@
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  * By default the firmware assumes HIGH=FILAMENT PRESENT.
  */
-#define FILAMENT_RUNOUT_SENSOR
+//#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define FIL_RUNOUT_PIN 63          // Interrupteur de fin de fillament sur AUX-2 -> pin D59
   #define NUM_RUNOUT_SENSORS   1     // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
@@ -1438,7 +1438,7 @@
  * you must uncomment the following option or it won't work.
  *
  */
-//#define SDSUPPORT
+#define SDSUPPORT
 
 /**
  * SD CARD: SPI SPEED
