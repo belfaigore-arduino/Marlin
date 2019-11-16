@@ -378,9 +378,14 @@
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
   // tornado Volcano Silicon Socket : M303 E0 S200 C8
-  #define DEFAULT_Kp 14.62
-  #define DEFAULT_Ki 1.25
-  #define DEFAULT_Kd 42.81
+  //#define DEFAULT_Kp 14.62
+  //#define DEFAULT_Ki 1.25
+  //#define DEFAULT_Kd 42.81
+
+  // Volcano E3D V6 MK8, sans Silicon (16/11/2019)
+  #define DEFAULT_Kp 26.44
+  #define DEFAULT_Ki 3.71
+  #define DEFAULT_Kd 47.11
 
 #endif // PIDTEMP
 
